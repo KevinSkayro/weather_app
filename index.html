@@ -3,51 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
       <div class="topbar">
-        <div class="burger_menu">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
+        <div class="topbar_upper">
+          <div class="burger_menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+          <div class="form_container">
+            <form action="get">
+              <input type="text" name="location" />
+            </form>
+            <div class="search_btn"><i class="fa fa-search"></i></div>
+          </div>
         </div>
-        <form action="get">
-          <input type="text" name="location" />
-        </form>
-        <div class="search"></div>
-      </div>
-      <div class="day_selection">
-        <div class="today">TODAY</div>
-        <div class="tomorrow">TOMORROW</div>
-        <div class="three_days">3 DAYS</div>
+        <div class="day_selection">
+          <div class="today">TODAY</div>
+          <div class="tomorrow">TOMORROW</div>
+          <div class="three_days">3 DAYS</div>
+        </div>
       </div>
     </header>
     <main>
-      <div class="date_n_time">
-        <span class="date">September 27, </span>
-        <span class="time">10:25 PM</span>
-      </div>
-      <div class="temp_highs_lows">
-        <span class="high">Day 75</span>
-        <i>/</i>
-        <span class="low">Night 55</span>
-      </div>
-      <div class="actual_temp">
-        <h2>65 F</h2>
-      </div>
-      <div class="feels_like_temp">
-        <span>Feels like 65</span>
-      </div>
-      <div class="weather_state">
-        <span>Mostly cloudy</span>
-      </div>
-      <div class="detailed_weather_facts">
-        <div class="wind"></div>
-        <div class="rain"></div>
-        <div class="humidity"></div>
+      <div class="main_inner_wrap">
+        <div class="date_n_time">
+          <span class="date">September 27, </span>
+          <span class="time">10:25 PM</span>
+        </div>
+        <div class="temp_highs_lows">
+          <span class="high">Day 75&deg; </span>
+          <i> /</i>
+          <span class="low"> Night 55&deg;</span>
+        </div>
+        <div class="actual_temp">
+          <h2>65 F&deg;</h2>
+        </div>
+        <div class="feels_like_temp">
+          <span>Feels like 65&deg;</span>
+        </div>
+        <div class="weather_state">
+          <span>Mostly cloudy</span>
+        </div>
+        <hr />
+        <div class="detailed_weather_facts">
+          <div class="wind">
+            <span>Wind</span>
+            <span>11</span>
+            <span>mph</span>
+            <div class="wind_bar progress_bar">
+              <div class="progress_done"></div>
+            </div>
+          </div>
+          <div class="rain">
+            <span>Rain</span>
+            <span>0</span>
+            <span>%</span>
+            <div class="rain_bar progress_bar">
+              <div class="progress_done"></div>
+            </div>
+          </div>
+          <div class="humidity">
+            <span>Humidity</span>
+            <span>55</span>
+            <span>%</span>
+            <div class="humidity_bar progress_bar">
+              <div class="progress_done"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <script src="./code.js"></script>
