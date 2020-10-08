@@ -1,14 +1,10 @@
 * {
   margin: 0;
   padding: 0;
-
+  box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 /*topbar section start*/
 .topbar {
   background-color: rgb(34, 33, 33);
@@ -37,7 +33,7 @@
   background-color: #fff;
 }
 form {
-  flex: 1;
+  display: flex;
 }
 input {
   height: 2rem;
@@ -80,16 +76,17 @@ input {
 
 /*main section start*/
 main {
-  background-image: url(./IMG/snow2.jpg);
+  background-image: url(./IMG/wind.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: calc(100vh - 104px);
   color: #fff;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 .main_inner_wrap {
   background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
 }
 .date_n_time {
   padding: 2rem 1rem;
@@ -99,36 +96,35 @@ main {
 }
 .actual_temp_container {
   font-size: 4rem;
-  padding: 12rem 1rem 0.5rem;
+  padding: 20vh 1rem 0.5rem;
 }
-.feels_like_temp {
+.feels_like_temp_container {
   padding: 0 1rem;
 }
-.weather_state {
+.weather_state_container {
   padding: 1rem;
 }
 hr {
   width: 90%;
-  margin: 0.5rem 5%;
+  margin: 3vh 5%;
   color: #9ea2a7;
   opacity: 0.5;
 }
 .detailed_weather_facts {
   display: flex;
   justify-content: space-around;
-
-  height: 176px;
+  padding: 2vh 0 1rem 0;
 }
-.wind,
-.rain,
-.humidity {
+.wind_container,
+.rain_container,
+.humidity_container {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
-.wind span,
-.rain span,
-.humidity span {
+.wind_container span,
+.rain_container span,
+.humidity_container span {
   margin-bottom: 0.5rem;
 }
 .progress_bar {
@@ -140,7 +136,6 @@ hr {
 }
 .progress_bar div {
   height: 100%;
-  width: 19%;
   border-radius: 0.2rem;
   min-width: 5px;
   max-width: 100px;

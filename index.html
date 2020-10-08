@@ -28,8 +28,10 @@
           <div class="form_container">
             <form>
               <input type="text" name="location" class="user_input" />
+              <button type="submit" class="search_btn">
+                <i class="fa fa-search"></i>
+              </button>
             </form>
-            <button class="search_btn"><i class="fa fa-search"></i></button>
           </div>
         </div>
         <div class="day_selection">
@@ -53,36 +55,36 @@
         <div class="actual_temp_container">
           <h2 class="actual_temp">65&deg;F</h2>
         </div>
-        <div class="feels_like_temp">
-          <span>Feels like 65&deg;</span>
+        <div class="feels_like_temp_container">
+          <span class="feels_like_temp">Feels like 65&deg;</span>
         </div>
-        <div class="weather_state">
-          <span>Mostly cloudy</span>
+        <div class="weather_state_container">
+          <span class="weather_state">Mostly cloudy</span>
         </div>
         <hr />
         <div class="detailed_weather_facts">
-          <div class="wind">
+          <div class="wind_container">
             <span>Wind</span>
-            <span>11</span>
+            <span class="wind">11</span>
             <span>mph</span>
             <div class="wind_bar progress_bar">
-              <div class="progress_done"></div>
+              <div class="bar_wind"></div>
             </div>
           </div>
-          <div class="rain">
+          <div class="rain_container">
             <span>Rain</span>
-            <span>0</span>
+            <span class="rain">0</span>
             <span>%</span>
             <div class="rain_bar progress_bar">
-              <div class="progress_done"></div>
+              <div class="bar_rain"></div>
             </div>
           </div>
-          <div class="humidity">
+          <div class="humidity_container">
             <span>Humidity</span>
-            <span>55</span>
+            <span class="humidity">55</span>
             <span>%</span>
             <div class="humidity_bar progress_bar">
-              <div class="progress_done"></div>
+              <div class="bar_humidity"></div>
             </div>
           </div>
         </div>

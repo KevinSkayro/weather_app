@@ -10,15 +10,23 @@ const today = document.querySelector(".today");
 const tomorrow = document.querySelector(".tomorrow");
 const threeDays = document.querySelector(".three_days");
 const actualTemp = document.querySelector(".actual_temp");
+const feelsLikeTemp = document.querySelector(".feels_like_temp");
+const weatherCondition = document.querySelector(".weather_state");
+const wind = document.querySelector(".wind");
+const windBar = document.querySelector(".bar_wind");
+const rain = document.querySelector(".rain");
+const rainBar = document.querySelector(".bar_rain");
+const humidity = document.querySelector(".humidity");
+const humidityBar = document.querySelector(".bar_humidity");
 //Event listeners
 
 searchBtn.addEventListener("click", getQuery);
-userInput.addEventListener("", getQuery);
 //Functions
 function getQuery(e) {
   e.preventDefault();
   updateSearch(userInput.value);
 }
+
 function updateSearch(query) {
   fetch(`${api.base}/current.json?key=${api.key}&q=${query}`)
     .then((weather) => {
@@ -30,4 +38,12 @@ function updateSearch(query) {
 function displayWeather(weather) {
   console.log(weather);
   actualTemp.innerHTML = `${weather.current.temp_f}<span>&deg;F</span>`;
+  feelsLikeTemp.innerHTML = `Feels like ${weather.current.feelslike_f}<span>&deg;F</span>`;
+  weatherCondition.innerHTML = `${weather.current.condition.text}`;
+  wind.innerHTML = `${weather.current.wind_mph}`;
+  windBar.style.width = wind.innerText + "px";
+  rain.innerHTML = `${weather.current.precip_in}`;
+  rainBar.style.width = wind.innerText + "px";
+  humidity.innerHTML = `${weather.current.humidity}`;
+  humidityBar.style.width = humidity.innerText + "px";
 }
