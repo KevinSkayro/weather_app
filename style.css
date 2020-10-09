@@ -73,6 +73,11 @@ input {
   border-bottom: 5px solid #000;
   font-size: 1.1rem;
 }
+.today:hover,
+.tomorrow:hover,
+.three_days:hover {
+  cursor: pointer;
+}
 .today,
 .tomorrow {
   border-right: 2px solid #000;
@@ -149,7 +154,7 @@ hr {
 .progress_bar div {
   height: 100%;
   border-radius: 0.2rem;
-  min-width: 5px;
+  min-width: 2px;
   max-width: 100px;
   background-color: #64f;
   position: absolute;

@@ -8,7 +8,7 @@ let time = document.querySelector(".time");
 const burgerMenu = document.querySelector(".burger_menu");
 const userInput = document.querySelector(".user_input");
 const searchBtn = document.querySelector(".search_btn");
-const selectDay = document.querySelectorAll(".day_selection");
+const selectDay = document.querySelectorAll(".option");
 const today = document.querySelector(".today");
 const tomorrow = document.querySelector(".tomorrow");
 const threeDays = document.querySelector(".three_days");
@@ -25,6 +25,9 @@ const humidityBar = document.querySelector(".bar_humidity");
 //Event listeners
 
 searchBtn.addEventListener("click", getQuery);
+today.addEventListener("click", openToday);
+tomorrow.addEventListener("click", openTomorrow);
+threeDays.addEventListener("click", openThreeDays);
 //Functions
 function getQuery(e) {
   e.preventDefault();
@@ -68,11 +71,11 @@ function displayWeather(weather) {
     weather.current.feelslike_f
   )}<span>&deg;F</span>`;
   weatherCondition.innerHTML = `${weather.current.condition.text}`;
-  wind.innerHTML = `${weather.current.wind_mph}`;
+  wind.innerHTML = `${Math.round(weather.current.wind_mph)}`;
   windBar.style.width = wind.innerText + "px";
-  rain.innerHTML = `${weather.current.precip_in}`;
+  rain.innerHTML = `${Math.round(weather.current.precip_in)}`;
   rainBar.style.width = wind.innerText + "px";
-  humidity.innerHTML = `${weather.current.humidity}`;
+  humidity.innerHTML = `${Math.round(weather.current.humidity)}`;
   humidityBar.style.width = humidity.innerText + "px";
 
   let now = new Date();
@@ -116,4 +119,22 @@ function dateBuilder(dt) {
 
   return `${month} ${day} ${date} ${year},`;
 }
-// function daySelection() {}
+function daySelection() {
+  for (let i = 0; i < selectDay.length; i++) {
+    if (selectDay[i].classList.contains("active")) {
+      selectDay[i].classList.remove("active");
+    }
+  }
+}
+function openToday() {
+  daySelection();
+  today.classList.add("active");
+}
+function openTomorrow() {
+  daySelection();
+  tomorrow.classList.add("active");
+}
+function openThreeDays() {
+  daySelection();
+  threeDays.classList.add("active");
+}
