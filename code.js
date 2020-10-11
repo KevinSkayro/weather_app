@@ -3,6 +3,10 @@ const api = {
   base: "http://api.weatherapi.com/v1",
 };
 //Selectors
+const sectionOne = document.querySelector(".section_one");
+const sectionTwo = document.querySelector(".section_two");
+const sectionThree = document.querySelector(".section_three");
+const mainCanvas = document.querySelectorAll(".main");
 let date = document.querySelector(".date");
 let time = document.querySelector(".time");
 const burgerMenu = document.querySelector(".burger_menu");
@@ -121,20 +125,27 @@ function dateBuilder(dt) {
 }
 function daySelection() {
   for (let i = 0; i < selectDay.length; i++) {
-    if (selectDay[i].classList.contains("active")) {
+    if (
+      selectDay[i].classList.contains("active") &&
+      mainCanvas[i].classList.contains("active")
+    ) {
       selectDay[i].classList.remove("active");
+      mainCanvas[i].classList.remove("active");
     }
   }
 }
 function openToday() {
   daySelection();
   today.classList.add("active");
+  sectionOne.classList.add("active");
 }
 function openTomorrow() {
   daySelection();
   tomorrow.classList.add("active");
+  sectionTwo.classList.add("active");
 }
 function openThreeDays() {
   daySelection();
   threeDays.classList.add("active");
+  sectionThree.classList.add("active");
 }

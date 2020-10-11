@@ -92,14 +92,22 @@ input {
 /*topbar section end*/
 
 /*main section start*/
-main {
+.main {
   background-image: url(./IMG/wind.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: calc(100vh - 104px);
+  width: 100%;
   color: #fff;
   overflow-y: scroll;
+  position: absolute;
+  transform: translateY(100%);
+}
+.section_one.active,
+.section_two.active,
+.section_three.active {
+  transform: translateY(0);
 }
 .main_inner_wrap {
   background-color: rgba(0, 0, 0, 0.5);
