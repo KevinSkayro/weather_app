@@ -51,7 +51,22 @@ function getQuery(e) {
   e.preventDefault();
   updateSearch(userInput.value);
 }
-
+(function getIp() {
+  const successCallback = (position) => {
+    console.log(position);
+    updateSearch(`${position.coords.latitude}, ${position.coords.longitude}`);
+  };
+  const errorCallback = (error) => {
+    console.error(error);
+  };
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  // fetch("https://api.ipify.org/?format=json")
+  //   .then((results) => results.json())
+  //   .then((data) => {
+  //     updateSearch(data.ip);
+  //     console.log(data.ip);
+  //   });
+})();
 function updateSearch(query) {
   fetch(`${api.base}/forecast.json?key=${api.key}&q=${query}&days=3`)
     .then((weather) => {
