@@ -2,13 +2,11 @@ const api = {
   key: "249e0914f0284c25bda121440200410",
   base: "http://api.weatherapi.com/v1",
 };
-//Selectors
+//Selectors topbar
 const sectionOne = document.querySelector(".section_one");
 const sectionTwo = document.querySelector(".section_two");
 const sectionThree = document.querySelector(".section_three");
 const mainCanvas = document.querySelectorAll(".main");
-let date = document.querySelector(".date");
-let time = document.querySelector(".time");
 const burgerMenu = document.querySelector(".burger_menu");
 const userInput = document.querySelector(".user_input");
 const searchBtn = document.querySelector(".search_btn");
@@ -16,6 +14,10 @@ const selectDay = document.querySelectorAll(".option");
 const today = document.querySelector(".today");
 const tomorrow = document.querySelector(".tomorrow");
 const threeDays = document.querySelector(".three_days");
+
+//Selectors option one
+let date = document.querySelector(".date");
+let time = document.querySelector(".time");
 const maxNminTemp = document.querySelector(".highLow");
 const actualTemp = document.querySelector(".actual_temp");
 const feelsLikeTemp = document.querySelector(".feels_like_temp");
@@ -26,6 +28,18 @@ const rain = document.querySelector(".rain");
 const rainBar = document.querySelector(".bar_rain");
 const humidity = document.querySelector(".humidity");
 const humidityBar = document.querySelector(".bar_humidity");
+
+//Selectors option two
+let dateTwo = document.querySelector(".date2");
+const maxNminTempTwo = document.querySelector(".highLowTwo");
+const averageTempTwo = document.querySelector(".average_temp");
+const weatherConditionTwo = document.querySelector(".weather_state_two");
+const windTwo = document.querySelector(".wind_two");
+const windBarTwo = document.querySelector(".bar_wind_two");
+const rainTwo = document.querySelector(".rain_two");
+const rainBarTwo = document.querySelector(".bar_rain_two");
+const humidityTwo = document.querySelector(".humidity_two");
+const humidityBarTwo = document.querySelector(".bar_humidity_two");
 //Event listeners
 
 searchBtn.addEventListener("click", getQuery);
@@ -61,6 +75,7 @@ function updateSearch(query) {
 }
 
 function displayWeather(weather) {
+  //section one
   console.log(weather);
   maxNminTemp.innerHTML = `Day ${Math.round(
     weather.forecast.forecastday[0].day.maxtemp_f
@@ -77,19 +92,77 @@ function displayWeather(weather) {
   weatherCondition.innerHTML = `${weather.current.condition.text}`;
   wind.innerHTML = `${Math.round(weather.current.wind_mph)}`;
   windBar.style.width = wind.innerText + "px";
-  rain.innerHTML = `${Math.round(weather.current.precip_in)}`;
-  rainBar.style.width = wind.innerText + "px";
+  rain.innerHTML = `${Math.round(
+    weather.forecast.forecastday[0].day.daily_chance_of_rain
+  )}`;
+  rainBar.style.width = rain.innerText + "px";
   humidity.innerHTML = `${Math.round(weather.current.humidity)}`;
   humidityBar.style.width = humidity.innerText + "px";
 
   let now = new Date();
 
   date.innerText = dateBuilder(now);
+
   if (now.getMinutes() <= 9) {
     time.innerText = ` ${now.getHours()}:0${now.getMinutes()}`;
   } else {
     time.innerText = ` ${now.getHours()}:${now.getMinutes()}`;
   }
+
+  //section two "tomorrow"
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "Dicember",
+  ];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let date2 = weather.forecast.forecastday[1].date;
+  let tomorrow = date2.split("-");
+
+  let day = days[now.getDay() + 1];
+  let datet = tomorrow[2];
+  let month = months[tomorrow[1] - 1];
+  let year = tomorrow[0];
+  dateTwo.innerText = `${month} ${day} ${datet} ${year}`;
+  maxNminTempTwo.innerHTML = `Day ${Math.round(
+    weather.forecast.forecastday[1].day.maxtemp_f
+  )}<span>&deg;F</span>/Night ${Math.round(
+    weather.forecast.forecastday[1].day.mintemp_f
+  )}<span>&deg;F</span>`;
+  averageTempTwo.innerHTML = `${Math.round(
+    weather.forecast.forecastday[1].day.avgtemp_f
+  )}<span>&deg;F</span>`;
+  weatherConditionTwo.innerHTML = `${weather.forecast.forecastday[1].day.condition.text}`;
+  windTwo.innerHTML = `${Math.round(
+    weather.forecast.forecastday[1].day.maxwind_mph
+  )}`;
+  windBarTwo.style.width = windTwo.innerText + "px";
+  rainTwo.innerHTML = `${Math.round(
+    weather.forecast.forecastday[1].day.daily_chance_of_rain
+  )}`;
+  rainBarTwo.style.width = rainTwo.innerText + "px";
+  humidityTwo.innerHTML = `${Math.round(
+    weather.forecast.forecastday[1].day.avghumidity
+  )}`;
+  humidityBarTwo.style.width = humidityTwo.innerText + "px";
 }
 
 function dateBuilder(dt) {
@@ -123,6 +196,7 @@ function dateBuilder(dt) {
 
   return `${month} ${day} ${date} ${year},`;
 }
+
 function daySelection() {
   for (let i = 0; i < selectDay.length; i++) {
     if (
