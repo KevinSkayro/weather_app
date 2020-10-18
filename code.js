@@ -40,6 +40,17 @@ const rainTwo = document.querySelector(".rain_two");
 const rainBarTwo = document.querySelector(".bar_rain_two");
 const humidityTwo = document.querySelector(".humidity_two");
 const humidityBarTwo = document.querySelector(".bar_humidity_two");
+
+//Selectors option three
+const sec1Day1 = document.querySelector(".sec1_day1");
+const sec2Day1 = document.querySelector(".sec2_day1");
+const sec3Day1 = document.querySelector(".sec3_day1");
+const sec1Day2 = document.querySelector(".sec1_day2");
+const sec2Day2 = document.querySelector(".sec2_day2");
+const sec3Day2 = document.querySelector(".sec3_day2");
+const sec1Day3 = document.querySelector(".sec1_day3");
+const sec2Day3 = document.querySelector(".sec2_day3");
+const sec3Day3 = document.querySelector(".sec3_day3");
 //Event listeners
 
 searchBtn.addEventListener("click", getQuery);
@@ -58,14 +69,9 @@ function getQuery(e) {
   };
   const errorCallback = (error) => {
     console.error(error);
+    feelsLikeTemp.innerHTML = "User denied location";
   };
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-  // fetch("https://api.ipify.org/?format=json")
-  //   .then((results) => results.json())
-  //   .then((data) => {
-  //     updateSearch(data.ip);
-  //     console.log(data.ip);
-  //   });
 })();
 function updateSearch(query) {
   fetch(`${api.base}/forecast.json?key=${api.key}&q=${query}&days=3`)
@@ -104,7 +110,7 @@ function displayWeather(weather) {
   feelsLikeTemp.innerHTML = `Feels like ${Math.round(
     weather.current.feelslike_f
   )}<span>&deg;F</span>`;
-  weatherCondition.innerHTML = `${weather.current.condition.text}`;
+  weatherCondition.innerHTML = `${weather.current.condition.text} <img src="${weather.forecast.forecastday[0].day.condition.icon}" />`;
   wind.innerHTML = `${Math.round(weather.current.wind_mph)}`;
   windBar.style.width = wind.innerText + "px";
   rain.innerHTML = `${Math.round(
@@ -165,7 +171,7 @@ function displayWeather(weather) {
   averageTempTwo.innerHTML = `${Math.round(
     weather.forecast.forecastday[1].day.avgtemp_f
   )}<span>&deg;F</span>`;
-  weatherConditionTwo.innerHTML = `${weather.forecast.forecastday[1].day.condition.text}`;
+  weatherConditionTwo.innerHTML = `${weather.forecast.forecastday[1].day.condition.text}<img src="${weather.forecast.forecastday[1].day.condition.icon}" />`;
   windTwo.innerHTML = `${Math.round(
     weather.forecast.forecastday[1].day.maxwind_mph
   )}`;
@@ -178,6 +184,41 @@ function displayWeather(weather) {
     weather.forecast.forecastday[1].day.avghumidity
   )}`;
   humidityBarTwo.style.width = humidityTwo.innerText + "px";
+
+  //section 3
+  sec1Day1.innerHTML = `<span>Today</span> <span>${weather.current.condition.text} </span>`;
+  sec3Day1.innerHTML = `<img src="${
+    weather.forecast.forecastday[0].day.condition.icon
+  }" /><div><span>${Math.round(
+    weather.forecast.forecastday[0].day.maxtemp_f
+  )}&deg;</span><span>${Math.round(
+    weather.forecast.forecastday[0].day.mintemp_f
+  )}&deg;</span></div>`;
+
+  sec1Day2.innerHTML = `<span>${day} ${month} ${datet}</span> <span>${weather.current.condition.text} </span>`;
+  sec3Day2.innerHTML = `<img src="${
+    weather.forecast.forecastday[1].day.condition.icon
+  }" /><div><span>${Math.round(
+    weather.forecast.forecastday[1].day.maxtemp_f
+  )}&deg;</span><span>${Math.round(
+    weather.forecast.forecastday[1].day.mintemp_f
+  )}&deg;</span></div>`;
+
+  let date3 = weather.forecast.forecastday[2].date;
+  let thridday = date3.split("-");
+
+  let day3 = days[now.getDay() + 2];
+  let datethird = thridday[2];
+  let month3 = months[thridday[1] - 1];
+
+  sec1Day3.innerHTML = `<span>${day3} ${month3} ${datethird}</span> <span>${weather.current.condition.text} </span>`;
+  sec3Day3.innerHTML = `<img src="${
+    weather.forecast.forecastday[2].day.condition.icon
+  }" /><div><span>${Math.round(
+    weather.forecast.forecastday[2].day.maxtemp_f
+  )}&deg;</span><span>${Math.round(
+    weather.forecast.forecastday[2].day.mintemp_f
+  )}&deg;</span></div>`;
 }
 
 function dateBuilder(dt) {

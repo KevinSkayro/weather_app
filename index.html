@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+      user-scalable="no"
+    />
     <title>Weather</title>
     <link
       rel="stylesheet"
@@ -17,169 +21,146 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <div class="topbar">
-        <div class="topbar_upper">
-          <div class="burger_menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+    <div class="main_wrap">
+      <header>
+        <div class="topbar">
+          <div class="topbar_upper">
+            <div class="burger_menu">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+            </div>
+            <div class="form_container">
+              <form>
+                <input type="text" name="location" class="user_input" />
+                <button type="submit" class="search_btn">
+                  <i class="fa fa-search"></i>
+                </button>
+              </form>
+            </div>
           </div>
-          <div class="form_container">
-            <form>
-              <input type="text" name="location" class="user_input" />
-              <button type="submit" class="search_btn">
-                <i class="fa fa-search"></i>
-              </button>
-            </form>
+          <div class="day_selection">
+            <div class="option today active">TODAY</div>
+            <div class="option tomorrow">TOMORROW</div>
+            <div class="option three_days">3 DAYS</div>
           </div>
         </div>
-        <div class="day_selection">
-          <div class="option today active">TODAY</div>
-          <div class="option tomorrow">TOMORROW</div>
-          <div class="option three_days">3 DAYS</div>
-        </div>
-      </div>
-    </header>
+      </header>
 
-    <div class="main section_one active">
-      <div class="main_inner_wrap">
-        <div class="date_n_time">
-          <span class="date"></span>
-          <span class="time"></span>
-        </div>
-        <div class="temp_highs_lows">
-          <span class="highLow"></span>
-        </div>
-        <div class="actual_temp_container">
-          <h2 class="actual_temp">Search</h2>
-        </div>
-        <div class="feels_like_temp_container">
-          <span class="feels_like_temp"></span>
-        </div>
-        <div class="weather_state_container">
-          <span class="weather_state"></span>
-        </div>
-        <hr />
-        <div class="detailed_weather_facts">
-          <div class="wind_container">
-            <span>Wind</span>
-            <span class="wind">0</span>
-            <span>mph</span>
-            <div class="wind_bar progress_bar">
-              <div class="bar_wind"></div>
-            </div>
+      <div class="main section_one active">
+        <div class="main_inner_wrap">
+          <div class="date_n_time">
+            <span class="date"></span>
+            <span class="time"></span>
           </div>
-          <div class="rain_container">
-            <span>Rain</span>
-            <span class="rain">0</span>
-            <span>%</span>
-            <div class="rain_bar progress_bar">
-              <div class="bar_rain"></div>
-            </div>
+          <div class="temp_highs_lows">
+            <span class="highLow"></span>
           </div>
-          <div class="humidity_container">
-            <span>Humidity</span>
-            <span class="humidity">0</span>
-            <span>%</span>
-            <div class="humidity_bar progress_bar">
-              <div class="bar_humidity"></div>
-            </div>
+          <div class="actual_temp_container">
+            <h2 class="actual_temp">Search</h2>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="main section_two">
-      <div class="main_inner_wrap">
-        <div class="date_n_time">
-          <span class="date2"></span>
-        </div>
-        <div class="temp_highs_lows">
-          <span class="highLowTwo"></span>
-        </div>
-        <div class="average_temp_container">
-          <span class="avg_temp_span">Average tempeture</span>
-          <h2 class="average_temp"></h2>
-        </div>
-        <div class="weather_state_container">
-          <span class="weather_state_two"></span>
-        </div>
-        <hr />
-        <div class="detailed_weather_facts">
-          <div class="wind_container">
-            <span>Wind</span>
-            <span class="wind_two">0</span>
-            <span>mph</span>
-            <div class="wind_bar progress_bar">
-              <div class="bar_wind_two"></div>
-            </div>
+          <div class="feels_like_temp_container">
+            <span class="feels_like_temp"></span>
           </div>
-          <div class="rain_container">
-            <span>Rain</span>
-            <span class="rain_two">0</span>
-            <span>%</span>
-            <div class="rain_bar progress_bar">
-              <div class="bar_rain_two"></div>
-            </div>
+          <div class="weather_state_container">
+            <div class="weather_state"></div>
           </div>
-          <div class="humidity_container">
-            <span>Humidity</span>
-            <span class="humidity_two">0</span>
-            <span>%</span>
-            <div class="humidity_bar progress_bar">
-              <div class="bar_humidity_two"></div>
+          <hr />
+          <div class="detailed_weather_facts">
+            <div class="wind_container">
+              <span>Wind</span>
+              <span class="wind">0</span>
+              <span>mph</span>
+              <div class="wind_bar progress_bar">
+                <div class="bar_wind"></div>
+              </div>
+            </div>
+            <div class="rain_container">
+              <span>Rain</span>
+              <span class="rain">0</span>
+              <span>%</span>
+              <div class="rain_bar progress_bar">
+                <div class="bar_rain"></div>
+              </div>
+            </div>
+            <div class="humidity_container">
+              <span>Humidity</span>
+              <span class="humidity">0</span>
+              <span>%</span>
+              <div class="humidity_bar progress_bar">
+                <div class="bar_humidity"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="main section_three">
-      <div class="main_inner_wrap">
-        <div class="date_n_time">
-          <span class="date"></span>
-          <span class="time"></span>
-        </div>
-        <div class="temp_highs_lows">
-          <span class="highLow"></span>
-        </div>
-        <div class="actual_temp_container">
-          <h2 class="actual_temp">Search3</h2>
-        </div>
-        <div class="feels_like_temp_container">
-          <span class="feels_like_temp"></span>
-        </div>
-        <div class="weather_state_container">
-          <span class="weather_state"></span>
-        </div>
-        <hr />
-        <div class="detailed_weather_facts">
-          <div class="wind_container">
-            <span>Wind</span>
-            <span class="wind">0</span>
-            <span>mph</span>
-            <div class="wind_bar progress_bar">
-              <div class="bar_wind"></div>
-            </div>
+      <div class="main section_two">
+        <div class="main_inner_wrap">
+          <div class="date_n_time">
+            <span class="date2"></span>
           </div>
-          <div class="rain_container">
-            <span>Rain</span>
-            <span class="rain">0</span>
-            <span>%</span>
-            <div class="rain_bar progress_bar">
-              <div class="bar_rain"></div>
-            </div>
+          <div class="temp_highs_lows">
+            <span class="highLowTwo"></span>
           </div>
-          <div class="humidity_container">
-            <span>Humidity</span>
-            <span class="humidity">0</span>
-            <span>%</span>
-            <div class="humidity_bar progress_bar">
-              <div class="bar_humidity"></div>
+          <div class="average_temp_container">
+            <span class="avg_temp_span">Average tempeture</span>
+            <h2 class="average_temp"></h2>
+          </div>
+          <div class="weather_state_container">
+            <div class="weather_state_two"></div>
+          </div>
+          <hr />
+          <div class="detailed_weather_facts">
+            <div class="wind_container">
+              <span>Wind</span>
+              <span class="wind_two">0</span>
+              <span>mph</span>
+              <div class="wind_bar progress_bar">
+                <div class="bar_wind_two"></div>
+              </div>
+            </div>
+            <div class="rain_container">
+              <span>Rain</span>
+              <span class="rain_two">0</span>
+              <span>%</span>
+              <div class="rain_bar progress_bar">
+                <div class="bar_rain_two"></div>
+              </div>
+            </div>
+            <div class="humidity_container">
+              <span>Humidity</span>
+              <span class="humidity_two">0</span>
+              <span>%</span>
+              <div class="humidity_bar progress_bar">
+                <div class="bar_humidity_two"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="main section_three">
+        <div class="main_inner_wrap">
+          <div class="day_1">
+            <div class="sec1_day1"></div>
+            <div class="sec2_day1"></div>
+            <div class="sec3_day1"></div>
+          </div>
+          <hr />
+          <div class="day_2">
+            <div class="sec1_day2"></div>
+            <div class="sec2_day2"></div>
+            <div class="sec3_day2"></div>
+          </div>
+          <hr />
+          <div class="day_3">
+            <div class="sec1_day3"></div>
+            <div class="sec2_day3"></div>
+            <div class="sec3_day3"></div>
+          </div>
+          <hr />
+        </div>
+      </div>
+      <script src="./code.js"></script>
     </div>
-    <script src="./code.js"></script>
   </body>
 </html>
