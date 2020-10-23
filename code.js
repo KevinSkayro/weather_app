@@ -64,7 +64,6 @@ function getQuery(e) {
 }
 (function getIp() {
   const successCallback = (position) => {
-    console.log(position);
     updateSearch(`${position.coords.latitude}, ${position.coords.longitude}`);
   };
   const errorCallback = (error) => {
@@ -97,7 +96,6 @@ function updateSearch(query) {
 
 function displayWeather(weather) {
   //section one
-  console.log(weather);
   maxNminTemp.innerHTML = `Day ${Math.round(
     weather.forecast.forecastday[0].day.maxtemp_f
   )}<span>&deg;F</span>/Night ${Math.round(
@@ -153,6 +151,8 @@ function displayWeather(weather) {
     "Thursday",
     "Friday",
     "Saturday",
+    "Sunday",
+    "Monday",
   ];
 
   let date2 = weather.forecast.forecastday[1].date;
@@ -208,6 +208,7 @@ function displayWeather(weather) {
   let thridday = date3.split("-");
 
   let day3 = days[now.getDay() + 2];
+  console.log(day);
   let datethird = thridday[2];
   let month3 = months[thridday[1] - 1];
 
@@ -219,6 +220,390 @@ function displayWeather(weather) {
   )}&deg;</span><span>${Math.round(
     weather.forecast.forecastday[2].day.mintemp_f
   )}&deg;</span></div>`;
+
+  //background change
+  const codeOne = weather.current.condition.code;
+  const codeTwo = weather.forecast.forecastday[1].day.condition.code;
+
+  switch (codeOne) {
+    case 1000:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/sunny.jpg') no-repeat fixed center";
+      break;
+    case 1006:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/cloud.jpg') no-repeat fixed center";
+      break;
+    case 1009:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/overcast.jpg') no-repeat fixed center";
+      break;
+    case 1030:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/mist.jpg') no-repeat fixed center";
+      break;
+    case 1063:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1066:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1069:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1087:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    case 1114:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/blowing_snow.jpg') no-repeat fixed center";
+      break;
+    case 1117:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/blizzard.jpg') no-repeat fixed center";
+      break;
+    case 1035:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/mist.jpg') no-repeat fixed center";
+      break;
+    case 1147:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/mist.jpg') no-repeat fixed center";
+      break;
+    case 1150:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1153:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1168:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/rain.jpg') no-repeat fixed center";
+      break;
+    case 1171:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/rain.jpg') no-repeat fixed center";
+      break;
+    case 1180:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1183:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1086:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1189:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1192:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1195:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1198:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1201:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1204:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1207:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/rain.jpg') no-repeat fixed center";
+      break;
+    case 1210:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1213:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1216:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1219:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow2.jpg') no-repeat fixed center";
+      break;
+    case 1222:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1225:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/blowing_snow.jpg') no-repeat fixed center";
+      break;
+    case 1237:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1240:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1243:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1246:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1249:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1252:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/rain.jpg') no-repeat fixed center";
+      break;
+    case 1255:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1258:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1261:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1264:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow2.jpg') no-repeat fixed center";
+      break;
+    case 1273:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    case 1276:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    case 1279:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    case 1282:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    default:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/wind.jpg') no-repeat fixed center";
+  }
+
+  switch (codeTwo) {
+    case 1000:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/sunny.jpg') no-repeat fixed center";
+      break;
+    case 1006:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/cloud.jpg') no-repeat fixed center";
+      break;
+    case 1009:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/overcast.jpg') no-repeat fixed center";
+      break;
+    case 1030:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/mist.jpg') no-repeat fixed center";
+      break;
+    case 1063:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1066:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1069:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1087:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    case 1114:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/blowing_snow.jpg') no-repeat fixed center";
+      break;
+    case 1117:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/blizzard.jpg') no-repeat fixed center";
+      break;
+    case 1035:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/mist.jpg') no-repeat fixed center";
+      break;
+    case 1147:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/mist.jpg') no-repeat fixed center";
+      break;
+    case 1150:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1153:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1168:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/rain.jpg') no-repeat fixed center";
+      break;
+    case 1171:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/rain.jpg') no-repeat fixed center";
+      break;
+    case 1180:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1183:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1086:
+      sectionOne.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1189:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1192:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1195:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1198:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1201:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1204:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1207:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/rain.jpg') no-repeat fixed center";
+      break;
+    case 1210:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1213:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1216:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1219:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow2.jpg') no-repeat fixed center";
+      break;
+    case 1222:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1225:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/blowing_snow.jpg') no-repeat fixed center";
+      break;
+    case 1237:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1240:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1243:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1246:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/heavy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1249:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_rain.jpg') no-repeat fixed center";
+      break;
+    case 1252:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/rain.jpg') no-repeat fixed center";
+      break;
+    case 1255:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/patchy_snow.jpg') no-repeat fixed center";
+      break;
+    case 1258:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1261:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow.jpg') no-repeat fixed center";
+      break;
+    case 1264:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/snow2.jpg') no-repeat fixed center";
+      break;
+    case 1273:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    case 1276:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    case 1279:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    case 1282:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/thunder.jpg') no-repeat fixed center";
+      break;
+    default:
+      sectionTwo.style.background =
+        "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('IMG/wind.jpg') no-repeat fixed center";
+  }
 }
 
 function dateBuilder(dt) {

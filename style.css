@@ -102,6 +102,7 @@ input {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  
   height: calc(100vh - 104px);
   width: 100%;
   color: #fff;
@@ -185,9 +186,9 @@ hr {
   background-color: #64f;
   position: absolute;
 }
-/* .day_1 {
+.day_1 {
   padding-top: 1.5rem;
-} */
+}
 .day_1,
 .day_2,
 .day_3 {
